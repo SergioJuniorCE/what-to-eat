@@ -60,3 +60,7 @@ export const flyAndScale = (
 		easing: cubicOut
 	};
 };
+
+export const getIsMobile = () => {
+	return window.matchMedia("(max-width: 768px)").matches;
+};

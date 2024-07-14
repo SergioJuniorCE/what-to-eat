@@ -43,7 +43,7 @@
   },
   "type": "module",
   "dependencies": {
-    "bits-ui": "^0.21.10",
+    "bits-ui": "^0.21.12",
     "clsx": "^2.1.1",
     "pocketbase": "^0.21.3",
     "svelte-dnd-action": "^0.9.49",
