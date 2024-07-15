@@ -25,23 +25,18 @@
 </script>
 
 <section
+	class="w-44 flex flex-col gap-3"
 	use:dndzone={{ items, flipDurationMs }}
 	onconsider={handleDndConsider}
 	onfinalize={handleDndFinalize}
 >
 	{#each items as item (item.id)}
-		<div animate:flip={{ duration: flipDurationMs }}>
-			<Card.Root>
+		<div class="" animate:flip={{ duration: flipDurationMs }}>
+			<Card.Root class="h-24">
 				<Card.Header>
 					<Card.Title>{item.name}</Card.Title>
-					<Card.Description>Card Description</Card.Description>
+					<Card.Description>Rating: {item.rating} | Times Done: {item.times_done}</Card.Description>
 				</Card.Header>
-				<Card.Content>
-					<p>Card Content</p>
-				</Card.Content>
-				<Card.Footer>
-					<p>Card Footer</p>
-				</Card.Footer>
 			</Card.Root>
 		</div>
 	{/each}

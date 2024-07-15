@@ -1,9 +1,10 @@
 
 import { getContext, setContext } from 'svelte';
 import { pb } from '.';
+import type { AuthModel } from 'pocketbase';
 
 class AuthStore {
-  user = $state(null);
+  user: AuthModel | null = $state(null);
   isSynced = $state(false);
 
   constructor() {

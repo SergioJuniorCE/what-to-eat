@@ -6,9 +6,14 @@ export type Recipe = {
   times_done: number;
 };
 
+export type DayPlan = {
+  id: number;
+  name: string;
+  items: Recipe[];
+};
 
 export type WeekPlan = {
   id: number;
   name: string;
-  items: Recipe[];
+  days: DayPlan[];
 };
