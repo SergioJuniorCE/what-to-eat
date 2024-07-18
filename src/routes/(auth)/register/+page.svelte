@@ -1,5 +1,23 @@
 <script lang="ts">
-    import type { PageData } from './$types';
+    import { z } from 'zod'
+	import { getAuthContext } from '$lib/pocketbase/auth.svelte';
+	import { goto } from '$app/navigation';
+	import { toast } from 'svelte-sonner';
     
-    export let data: PageData;
+    const auth = getAuthContext();
+
+    let email = $state('')
+    let password = $state('')
+
+    async function handleSubmit() {
+        z.object({
+            email: z.string().email(),
+            password: z.string().min(8)
+        }).parse({ email, password })
+
+        await auth.signInWithEmailAndPassword(email, password)
+
+        toast.success('Successfully registered!')
+        goto('/')
+    }
 </script>

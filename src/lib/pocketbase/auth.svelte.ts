@@ -17,6 +17,10 @@ class AuthStore {
     });
   }
 
+  async signInWithEmailAndPassword(email: string, password: string) {
+    this.user = (await pb.collection('users').authWithPassword(email, password)).record;
+  }
+
   async signInWithDiscord() {
     this.user = (await pb.collection('users').authWithOAuth2({ provider: 'discord' })).record;
   }
@@ -42,6 +46,6 @@ export const setAuthContext = () => {
   return setContext(AUTH_STORE_KEY, nAuthStore);
 };
 
-export const getAuthContext = () => {
+export const getAuthContext = (): AuthStore => {
   return getContext(AUTH_STORE_KEY);
 };
