@@ -1,5 +1,7 @@
 import type { PageServerLoad } from './$types';
 
 export const load = (async () => {
-  return {};
+  return {
+    asd: 1
+  };
 }) satisfies PageServerLoad;

@@ -1,24 +1,13 @@
 <script lang="ts">
 	import '../../app.css';
-	import { onMount, type Snippet } from 'svelte';
+	import { type Snippet } from 'svelte';
 	import Navbar from './navbar.svelte';
-	import { setAuthContext } from '$lib/pocketbase/auth.svelte';
-	import { Toaster } from 'svelte-sonner';
+	import { getAuthContext } from '$lib/pocketbase/auth.svelte';
 
-	let {
-		children
-	}: {
-		children: Snippet;
-	} = $props();
+	let { children }: { children: Snippet } = $props();
 
-	const auth = setAuthContext();
-
-	$effect(() => {
-		console.log('user', auth.user);
-	});
+	const auth = getAuthContext();
 </script>
-
-<Toaster />
 
 {#if auth.isSynced}
 	<header>

@@ -18,7 +18,37 @@ class AuthStore {
   }
 
   async signInWithEmailAndPassword(email: string, password: string) {
-    this.user = (await pb.collection('users').authWithPassword(email, password)).record;
+    console.log('signInWithEmailAndPassword', email, password);
+    const res = await pb.collection('users').authWithPassword(email, password)
+    console.log('signInWithEmailAndPassword', res);
+    this.user = res.record;
+  }
+
+  async signUpWithEmailAndPassword({
+    email,
+    password,
+    passwordConfirm,
+    firstName,
+    lastName,
+  }: {
+    email: string;
+    password: string;
+    passwordConfirm: string;
+    firstName: string;
+    lastName: string;
+  }) {
+    if (password !== passwordConfirm) {
+      throw new Error('Passwords do not match');
+    }
+
+    const res = await pb.collection('users').create({
+      email,
+      password,
+      passwordConfirm: password,
+      firstName,
+      lastName,
+    });
+    this.user = res;
   }
 
   async signInWithDiscord() {

@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { getAuthContext } from '$lib/pocketbase/auth.svelte';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
+	import { Button, buttonVariants } from '$lib/components/ui/button';
+	import { cn } from '$lib/utils';
 
 	const auth = getAuthContext();
 </script>
 
-<nav class="mb-3 flex items-center justify-center gap-3 border-b-[1px] border-gray-200 py-2">
+<nav class="mx-4 mb-3 flex items-center justify-between gap-3 border-b-[1px] border-gray-200 py-2">
 	<div></div>
 	<div>
 		<a href="/">Home</a>
@@ -27,6 +29,8 @@
 					</DropdownMenu.Group>
 				</DropdownMenu.Content>
 			</DropdownMenu.Root>
-		{:else}{/if}
+		{:else}
+			<a href="/login" class={cn(buttonVariants({ variant: 'default' }))}>Login</a>
+		{/if}
 	</div>
 </nav>
