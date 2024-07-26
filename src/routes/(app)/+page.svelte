@@ -1,11 +1,10 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
-	import Fridge from './fridge.svelte';
-	import Planner from './planner.svelte';
+  import Planner from '$lib/components/planner/planner.svelte';
+  import Recipes from '$lib/components/planner/recipes.svelte';
 </script>
 
 <div class="flex flex-row gap-4">
-	<Fridge />
+	<Recipes />
 	<main>
 		<Planner />
 	</main>

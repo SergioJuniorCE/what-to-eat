@@ -43,6 +43,7 @@ export type IngredientsRecord = {
 export type RecipesRecord = {
 	name?: string
 	rating?: number
+	user_id?: RecordIdString
 }
 
 export type UsersRecord = {
